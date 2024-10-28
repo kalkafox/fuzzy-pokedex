@@ -58,8 +58,8 @@ export function Pokemon({ pokemon }: { pokemon: Pokedex }) {
           '_blank',
         )
       }}
-      className={`rounded-lg shadow-md p-4 m-2 transition-colors w-full ${
-        color.isLight ? 'text-neutral-900' : 'text-neutral-300'
+      className={`rounded-lg shadow-md p-4 m-2 transition-colors ${
+        color.isLight ? 'text-neutral-100' : 'text-neutral-300'
       }`}>
       <div className='flex items-center'>
         <Icon
@@ -75,7 +75,10 @@ export function Pokemon({ pokemon }: { pokemon: Pokedex }) {
           />
         </div>
 
-        <h2 className='text-xl font-bold m-2'>
+        <h2
+          className={`text-xl font-bold m-2 ${
+            color.isDark ? 'stroke' : 'stroke-dark'
+          }`}>
           <span className='font-bold'>#{pokemon.id}</span>{' '}
           {pokemon.name.english}
         </h2>
@@ -88,10 +91,19 @@ export function Pokemon({ pokemon }: { pokemon: Pokedex }) {
           className='h-24 w-24 right-0 absolute m-4'
         />
       </div>
-      <p className='mt-2 text-xl font-bold'>{pokemon.species}</p>
-      <p className='mt-2 italic'>{pokemon.description}</p>
-      <p className='mt-4'>Height: {pokemon.profile.height}</p>
-      <p className='mt-1'>Weight: {pokemon.profile.weight}</p>
+      <p
+        className={`mt-2 text-xl font-bold ${
+          color.isDark ? 'stroke' : 'stroke-dark'
+        }`}>
+        {pokemon.species}
+      </p>
+      <p className={`mt-2 italic ${color.isDark ? 'stroke' : 'stroke-dark'}`}>
+        {pokemon.description}
+      </p>
+      <div className={`${color.isDark ? 'stroke' : 'stroke-dark'}`}>
+        <p className='mt-4'>Height: {pokemon.profile.height}</p>
+        <p className='mt-1'>Weight: {pokemon.profile.weight}</p>
+      </div>
       <div className='mt-4'>
         {pokemon.type.map((type) => (
           <div key={type} className='mt-4 '>
